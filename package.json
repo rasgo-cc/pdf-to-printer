@@ -1,6 +1,6 @@
 {
-  "name": "pdf-to-printer",
-  "version": "1.5.2",
+  "name": "@rasgo/pdf-to-printer",
+  "version": "1.5.3",
   "description": "A utility to print PDF files from Node.js and Electron",
   "license": "MIT",
   "author": "artiebits <artur.khusaenov@gmail.com>",
@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "test": "jest",
-    "lint": "prettier --write 'src/**/*.{js,ts,json,md}' 'webpack.production.config.js' 'examples'",
+    "lint": "prettier --write \"src/**/*.{js,ts,json,md}\" \"webpack.production.config.js\" \"examples\"",
     "build": "webpack --config webpack.production.config.js",
     "prepublishOnly": "npm run lint && npm run test && npm run build"
   },

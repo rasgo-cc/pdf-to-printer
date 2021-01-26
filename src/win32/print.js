@@ -17,15 +17,16 @@ const print = (pdf, options = {}) => {
 
   const { printer, win32 } = options;
 
+  if (printer) {
+    args.push("-print-to", printer);
+  } else {
+    args.push("-print-to-default");
+  }
+
   if (win32) {
     if (!Array.isArray(win32)) throw "options.win32 should be an array";
-    win32.map((win32Arg) => args.push(...win32Arg.split(" ")));
+    args.push(...win32);
   } else {
-    if (printer) {
-      args.push("-print-to", printer);
-    } else {
-      args.push("-print-to-default");
-    }
     args.push("-silent");
   }
 
