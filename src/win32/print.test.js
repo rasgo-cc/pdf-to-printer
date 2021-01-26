@@ -71,9 +71,11 @@ test("sends PDF file to the specific printer", () => {
 test("allows users to pass OS specific options", () => {
   const filename = "assets/pdf-sample.pdf";
   const printer = "Zebra";
-  const options = { printer, win32: ['-print-settings "1,2,fit"'] };
+  const options = { printer, win32: ["-print-settings", '"1,2,fit"'] };
   return print(filename, options).then(() => {
     expect(execAsync).toHaveBeenCalledWith("mocked_path_SumatraPDF.exe", [
+      "-print-to",
+      "Zebra",
       "-print-settings",
       '"1,2,fit"',
       filename,
