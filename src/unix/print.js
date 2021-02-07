@@ -8,7 +8,7 @@ const print = (pdf, options = {}) => {
   if (typeof pdf !== "string") throw "Invalid PDF name";
   if (!fs.existsSync(pdf)) throw "No such file";
 
-  const args = [pdf];
+  const args = [];
 
   const { printer, unix } = options;
 
@@ -18,8 +18,10 @@ const print = (pdf, options = {}) => {
 
   if (unix) {
     if (!Array.isArray(unix)) throw "options.unix should be an array";
-    unix.map((unixArg) => args.push(...unixArg.split(" ")));
+    args.push(...unix);
   }
+
+  args.push(pdf);
 
   return execAsync("lp", args);
 };
