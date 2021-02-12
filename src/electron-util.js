@@ -10,5 +10,12 @@ const isUsingAsar =
   process.mainModule.filename.includes("app.asar");
 
 export const fixPathForAsarUnpack = (path) => {
-  return isUsingAsar ? path.replace("app.asar", "app.asar.unpacked") : path;
+  return isUsingAsar
+    ? path.join(
+        path.replace("app.asar", "app.asar.unpacked"),
+        "@rasgo",
+        "pdf-to-printer",
+        "dist"
+      )
+    : path;
 };
