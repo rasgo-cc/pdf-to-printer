@@ -2,6 +2,8 @@
 
 // Taken from https://github.com/sindresorhus/electron-util/blob/master/node.js
 
+const { join } = require("path");
+
 const isElectron = "electron" in process.versions;
 
 const isUsingAsar =
@@ -11,7 +13,7 @@ const isUsingAsar =
 
 export const fixPathForAsarUnpack = (path) => {
   return isUsingAsar
-    ? path.join(
+    ? join(
         path.replace("app.asar", "app.asar.unpacked"),
         "@rasgo",
         "pdf-to-printer",
